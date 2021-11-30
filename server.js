@@ -17,15 +17,5 @@ app.use('*', (req, res) => {
 });
 
 app.listen(4000, ()=> {
-    console.log('Server is running on port 3000');
+    console.log('Server is running on port 4000');
 });
-
-/*
-
-app.get('/', (req, res) => {
-    let url = 'https://localhost:5001/api/AuthManagement/Login';
-    fetch(url).then(res => { return res.json();
-    // check data
-    }).then(data => console.log(data));
-});
-*/

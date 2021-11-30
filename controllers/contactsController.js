@@ -1,7 +1,13 @@
 const mongoose = require('mongoose');
 const Contacts = mongoose.model('Contact');
+const fetch = require('node-fetch');
 
 exports.getMainPage = (req, res)=> {
+    // must add token here to authorize
+    let url = 'https://localhost:44308/api/Accounts';
+    fetch(url).then(res => { return res.json();
+    // check data
+    }).then(data => console.log("Data: "+data));
     Contacts.find((error, items) => {
         if(!error){
             res.render('index.ejs', {contacts: items});
