@@ -17,6 +17,26 @@ exports.getMainPage = (req, res)=> {
     });
 };
 
+exports.getLoginPage = (req, res)=> {
+    Contacts.find((error, items) => {
+        if(!error){
+            res.render('login.ejs', {contacts: items});
+        } else {
+            console.log('Failed to retrieve data.');
+        }
+    });
+}
+
+exports.getRegisterPage = (req, res)=> {
+    Contacts.find((error, items) => {
+        if(!error){
+            res.render('register.ejs', {contacts: items});
+        } else {
+            console.log('Failed to retrieve data.');
+        }
+    });
+}
+
 exports.getAddPage = (req, res) => {
     Contacts.find((error, items) => {
         if(!error){
