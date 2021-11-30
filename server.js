@@ -1,57 +1,31 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const ejs = require('ejs');
-const fetch = require('node-fetch');
+const bodyParser = require('body-parser');
+require('./models/db');
+const mainPage = require('./routes/main');
+
 const app = express();
 
-// https://github.com/p-kristjan/corona
-// https://www.youtube.com/watch?v=LXmT6Nu8XFs / 5:11
-
-app.use(bodyParser.urlencoded({
-    extended: true 
-}));
 app.set('view engine', ejs);
+app.use(express.static('public'));
+app.use(bodyParser.urlencoded({extended: true}));
+
+app.use(mainPage);
+
+app.use('*', (req, res) => {
+    res.send('404 Page Not Found');
+});
+
+app.listen(4000, ()=> {
+    console.log('Server is running on port 3000');
+});
+
+/*
 
 app.get('/', (req, res) => {
-    let url = 'http://localhost:18096';
+    let url = 'https://localhost:5001/api/AuthManagement/Login';
     fetch(url).then(res => { return res.json();
     // check data
     }).then(data => console.log(data));
-        /*
-        Et saada kõige viimase kuupäeva objekti, kasutasin Object.keys() funktsiooni.
-        Object.keys() tekitas massiivi kasutades oma väärtusteks timelineitems[0] sees
-        asuvate objektide pealkirjasid.
-        Hiljem leidsin timelineitems[0] seest objektid kasutades pealkirja, mis sain
-        kätte eelmist meetodit kasutades.
-
-        let title = api.data.countrytimelinedata[0].info.title;
-        let source = api.data.countrytimelinedata[0].info.source;
-        let timelineitemsArray = Object.keys(api.data.timelineitems[0]); 
-        let firstObjTitle = timelineitemsArray[0];
-        let lastObjTitle = timelineitemsArray[timelineitemsArray.length - 2];
-        let firstObj = api.data.timelineitems[0][firstObjTitle];
-        let lastObj = api.data.timelineitems[0][lastObjTitle];
-
-        res.render('index.ejs', {
-            title: title,
-            firstHeader: firstObjTitle,
-            lastHeader: lastObjTitle,
-            firstNewDailyCases: firstObj.new_daily_cases,
-            lastNewDailyCases: lastObj.new_daily_cases,
-            firstTotalCases: firstObj.total_cases,
-            lastTotalCases: lastObj.total_cases,
-            firstTotalRecoveries: firstObj.total_recoveries,
-            lastTotalRecoveries: lastObj.total_recoveries,
-            source: source
-        });
-    }).catch(function(error){
-        console.log(error);
-    });
-    */
 });
-
-let port = 44396; //SSLPORT
-app.listen(port, () => {
-    // ERROR: fetch is not defined
-    console.log('Server is running on port: ' + port);
-});
+*/

@@ -2,51 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script src="https://kit.fontawesome.com/5cca11e197.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
-    <title>Estonia COVID Stats</title>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Phonebook</title>
 </head>
 <body>
-
-    <div class="container" >
-        <nav class="navbar navbar-expand-lg navbar-light bg-light" >
-            <a class="navbar-brand" href="#"><%= title %></a>
-        </nav>
-        <div class="row" style="margin: 0;">
-            <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col"><%= firstHeader %></th>
-                    <th scope="col"><%= lastHeader %></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">New daily cases</th>
-                    <td><%= firstNewDailyCases %></td>
-                    <td><%= lastNewDailyCases %></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Total cases</th>
-                    <td><%= firstTotalCases %></td>
-                    <td><%= lastTotalCases %></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Total recoveries</th>
-                    <td><%= firstTotalRecoveries %></td>
-                    <td><%= lastTotalRecoveries %></td>
-                  </tr>
-                </tbody>
-              </table>
+    <div class="box" id="heading">
+        <h1>Phonebook</h1>
+        <hr>
+        <% for(let i = 0; i < contacts.length; i++) { %>
+        <form action="/delete-contact" method="POST">
+        <div class="item">
+            <table>
+            <tr>
+            <td><button id="remove" type="submit" name="delete" value="<%= contacts[i].id %>"><i class="fas fa-trash"></i></button></td>
+            <td><p><%= contacts[i].firstname %></p></td>
+            <td><p><%= contacts[i].lastname %></p></td>
+            <td><p><%= contacts[i].phonenumber %></p></td>
+        </tr>
+    </table>
         </div>
-        <p>Source: <%= source %></p>
-    </div>
-
+    </form>
     
-    
-   
-     
+<% } %>
+<div id="button-add">
+<hr>
+<form action="/add-user" method="GET">
+    <button id="add">» Add Contact «</button>
+    </form>
+</div>
+</div>
 </body>
 </html>
