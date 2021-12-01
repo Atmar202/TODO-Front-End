@@ -17,9 +17,10 @@
             <table>
             <tr>
             <td><button id="remove" type="submit" name="delete" value="<%= contacts[i].id %>"><i class="fas fa-trash"></i></button></td>
-            <td><p><%= contacts[i].firstname %></p></td>
-            <td><p><%= contacts[i].lastname %></p></td>
-            <td><p><%= contacts[i].phonenumber %></p></td>
+            <td><p><%= contacts[i].deadline %></p></td>
+            <td><p><%= contacts[i].subject %></p></td>
+            <td><p><%= contacts[i].work_type %></p></td>
+            <td><p><%= contacts[i].work_date %></p></td>
         </tr>
     </table>
         </div>
@@ -32,5 +33,11 @@
         <button id="add">» Add Item «</button>
         </form>
 </div>
+<div id="button-add">
+</form>
+<form action="/" method="GET">
+    <button id="add">» Back «</button>
+    </form>
+    </div>
 </body>
 </html>

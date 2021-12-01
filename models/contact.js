@@ -3,13 +3,16 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const contactSchema = new Schema({
-    firstname: {
+    deadline: {
         type: String
     },
-    lastname: {
+    subject: {
         type: String
     },
-    phonenumber: {
+    work_type: {
+        type: String
+    },
+    work_date: {
         type: String
     }
 });

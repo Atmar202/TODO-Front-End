@@ -60,16 +60,19 @@ exports.getAddPage = (req, res) => {
 };
 
 exports.postnewContact = (req, res) => {
-    let firstname = req.body.newContactName;
-    let lastname = req.body.newContactLastName;
-    let phonenumber = req.body.newContactNumber;
+    let deadline = req.body.newDeadline;
+    let subject = req.body.newSubject;
+    let work_type = req.body.newWorkType;
+    let work_date = req.body.newWorkDate;
     let newContact = new Contacts();
-    newContact.phonenumber = phonenumber;
-    newContact.firstname = firstname;
-    newContact.lastname = lastname;
+    newContact.deadline = deadline;
+    newContact.subject = subject;
+    newContact.work_type = work_type;
+    newContact.work_date = work_date;
 
     newContact.save((error, response) => {
         if(!error){
+            console.log(newContact);
             res.redirect('/add-index');
         } else {
             console.log("Failed to save data.");
