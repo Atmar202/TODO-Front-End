@@ -10,7 +10,7 @@ const contactSchema = new Schema({
         type: String
     },
     phonenumber: {
-        type: Number
+        type: String
     }
 });
 

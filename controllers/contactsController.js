@@ -4,10 +4,12 @@ const fetch = require('node-fetch');
 
 exports.getMainPage = (req, res)=> {
     // must add token here to authorize
+    /*
     let url = 'https://localhost:44308/api/Accounts';
     fetch(url).then(res => { return res.json();
     // check data
     }).then(data => console.log("Data: "+data));
+    */
     Contacts.find((error, items) => {
         if(!error){
             res.render('index.ejs', {contacts: items});
@@ -21,6 +23,16 @@ exports.getLoginPage = (req, res)=> {
     Contacts.find((error, items) => {
         if(!error){
             res.render('login.ejs', {contacts: items});
+        } else {
+            console.log('Failed to retrieve data.');
+        }
+    });
+}
+
+exports.getAddIndexPage = (req, res)=> {
+    Contacts.find((error, items) => {
+        if(!error){
+            res.render('add-index.ejs', {contacts: items});
         } else {
             console.log('Failed to retrieve data.');
         }
@@ -58,7 +70,7 @@ exports.postnewContact = (req, res) => {
 
     newContact.save((error, response) => {
         if(!error){
-            res.redirect('/');
+            res.redirect('/add-index');
         } else {
             console.log("Failed to save data.");
         }
@@ -70,7 +82,7 @@ exports.deleteContact = (req, res) => {
 
     Contacts.findByIdAndRemove(checkedItemId, (error) => {
         if(!error){
-            res.redirect('/');
+            res.redirect('/add-index');
         } else {
             console.log('Failed to remove an item.');
         }

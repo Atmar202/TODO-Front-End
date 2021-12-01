@@ -10,22 +10,6 @@
 <body>
     <div class="box" id="heading">
         <h1>TODO List</h1>
-        <hr>
-        <% for(let i = 0; i < contacts.length; i++) { %>
-        <form action="/delete-contact" method="POST">
-        <div class="item">
-            <table>
-            <tr>
-            <td><button id="remove" type="submit" name="delete" value="<%= contacts[i].id %>"><i class="fas fa-trash"></i></button></td>
-            <td><p><%= contacts[i].firstname %></p></td>
-            <td><p><%= contacts[i].lastname %></p></td>
-            <td><p><%= contacts[i].phonenumber %></p></td>
-        </tr>
-    </table>
-        </div>
-    </form>
-    
-<% } %>
 <div id="button-add">
     <hr>
     <form action="/login" method="GET">
@@ -34,7 +18,7 @@
 </div>
 <div id="button-add">
 <hr>
-<form action="/add-user" method="GET">
+<form action="/register" method="GET">
     <button id="add">» Register «</button>
     </form>
 </div>

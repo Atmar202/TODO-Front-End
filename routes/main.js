@@ -6,6 +6,7 @@ router.get('/', contactsController.getMainPage);
 router.get('/login', contactsController.getLoginPage);
 router.get('/register', contactsController.getRegisterPage);
 router.get('/add-user', contactsController.getAddPage);
+router.get('/add-index', contactsController.getAddIndexPage);
 router.post('/delete-contact', contactsController.deleteContact);
 router.post('/add-contact', contactsController.postnewContact);
 router.post('/add-account', contactsController.newAccount);
