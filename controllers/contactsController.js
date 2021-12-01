@@ -76,3 +76,27 @@ exports.deleteContact = (req, res) => {
         }
     });
 }
+
+exports.loginAccount = (req, res) => {
+    const checkedItemId = req.body.delete;
+
+    Contacts.findByIdAndRemove(checkedItemId, (error) => {
+        if(!error){
+            res.redirect('/');
+        } else {
+            console.log('Failed to remove an item.');
+        }
+    });
+}
+
+exports.newAccount = (req, res) => {
+    const checkedItemId = req.body.delete;
+
+    Contacts.findByIdAndRemove(checkedItemId, (error) => {
+        if(!error){
+            res.redirect('/');
+        } else {
+            console.log('Failed to remove an item.');
+        }
+    });
+}

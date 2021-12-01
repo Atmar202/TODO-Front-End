@@ -5,11 +5,11 @@
     <script src="https://kit.fontawesome.com/5cca11e197.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title>Phonebook</title>
+    <title>TODO List</title>
 </head>
 <body>
     <div class="box" id="heading">
-        <h1>Phonebook</h1>
+        <h1>TODO List</h1>
         <hr>
         <% for(let i = 0; i < contacts.length; i++) { %>
         <form action="/delete-contact" method="POST">
@@ -27,11 +27,16 @@
     
 <% } %>
 <div id="button-add">
+    <hr>
+    <form action="/login" method="GET">
+        <button id="add">» Log in «</button>
+        </form>
+</div>
+<div id="button-add">
 <hr>
 <form action="/add-user" method="GET">
-    <button id="add">» Add Contact «</button>
+    <button id="add">» Register «</button>
     </form>
-</div>
 </div>
 </body>
 </html>
